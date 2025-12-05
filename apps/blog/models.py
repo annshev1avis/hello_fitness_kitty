@@ -1,3 +1,69 @@
-from django.db import models
+import math
 
-# Create your models here.
+from django.db import models
+from mdeditor.fields import MDTextField
+
+
+class Category(models.Model):
+    # Основные поля
+    name = models.CharField("Название", max_length=200)
+    description = models.CharField(
+        "Описание для страницы категории",
+        max_length=500
+    )
+    slug = models.SlugField("Cлаг", unique=True)
+    
+    class Meta:
+        verbose_name = "Категория"
+        verbose_name_plural = "Категории"
+        
+    def __str__(self):
+        return self.name
+    
+
+class Post(models.Model):
+    # Основные поля
+    name = models.CharField("Название", max_length=200)
+    description = models.CharField(
+        "Краткое описание",
+        help_text="Одно-два предложения",
+        max_length=200,
+    )
+    content = MDTextField("Содержание поста")
+    cover = models.FileField(
+        "Обложка",
+        upload_to="post_covers/",
+        null=True
+    )
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.RESTRICT,
+        verbose_name="Категория"
+    )
+    slug = models.SlugField("Слаг", unique=True)
+    
+    # Настройки видимости
+    is_published = models.BooleanField("Опубликован", default=False)
+    
+    # Неизменяемые поля
+    pub_datetime = models.DateTimeField("Время публикации", auto_now_add=True)
+    edited_datetime = models.DateTimeField("Последнее редактирование", auto_now=True)
+    views = models.IntegerField("Количество просмотров", default=0)
+    
+    class Meta:
+        verbose_name = "Пост"
+        verbose_name_plural = "Посты"
+        ordering = ['-pub_datetime']
+
+    def __str__(self):
+        return f"'{self.name}'"
+    
+    @property
+    def minutes_to_read(self):
+        """
+        Время чтения статьи в минутах
+        """
+        word_count = len(self.content.split())
+        avg_reading_speed = 200  # слов в минуту
+        
+        return  math.ceil(word_count / avg_reading_speed)

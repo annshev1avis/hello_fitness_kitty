@@ -21,6 +21,8 @@ INSTALLED_APPS = [
     # Мои приложения
     "apps.blog.apps.BlogConfig",
     "apps.pages.apps.PagesConfig",
+    # Third-party приложения
+    "mdeditor",
     # Системные приложения
     "django.contrib.admin",
     "django.contrib.auth",
@@ -45,7 +47,7 @@ ROOT_URLCONF = "project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -84,7 +86,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "ru"
 
 TIME_ZONE = "Europe/Moscow"
 
@@ -94,4 +96,30 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+MEDIA_ROOT = BASE_DIR / "media"  # физический путь на сервере, куда будут сохраняться загруженные файлы
+
+MEDIA_URL = "/media/"  # URL-префикс для доступа к медиафайлам
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Настройки md-редактора
+MDEDITOR_CONFIGS = {
+    'default': {
+        # Внешний вид
+        'width': '100%',
+        'lineWrapping': True,
+        'language': 'en',
+
+        # Загрузка изображений
+        'upload_image': True,
+        'image_folder': 'editor',
+        
+        # Автосохранение
+        'autosave': {
+            'enabled': True,
+            'delay': 3000,  # ms
+            'uniqueId': 'content'
+        },
+    }
+}
