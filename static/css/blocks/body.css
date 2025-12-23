@@ -1,0 +1,11 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: var(--color-bg-primary);
+    font-family: var(--font-family-primary);
+    color: var(--color-text-primary);
+    display: flex;
+    flex-direction: column;
+}

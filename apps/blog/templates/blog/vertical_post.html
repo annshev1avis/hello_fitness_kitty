@@ -1,0 +1,15 @@
+{% load static %}
+
+<article class="card card_vertical">
+  {% if post.cover %}
+    <img class="card__image card__image_vertical" src="{{ post.cover.url }}"/>
+  {% endif %}
+
+  <div class="card__content">
+    <div class="card__text">
+      <h3 class="title-h3 card__title">{{ post.name }}</h3>
+      <p class="text card__description">{{ post.description }}</p>
+    </div>
+    <a class="button text" href="{% url "blog:single_post" post.slug %}">Читать</a>
+  </div>
+</article>

@@ -1,0 +1,54 @@
+:root {
+    /* Цвета */
+    --color-bg-primary: #E8E8E8;
+    --color-bg-secondary: #FFFFFF;
+    --color-bg-3: #000000;
+
+    --color-text-primary: #0D0D0D;
+    --color-text-secondary: #979797;
+    --color-text-3: #FFFFFF;
+
+    --accent-color-1: #F96428;
+    --accent-color-1: #4690F9;
+
+    --color-button: #E8E8E8;
+    --color-button-hover: #d1d1d1;
+    --color-button-focus: #b2b2b2;
+
+
+    /* Шрифты */
+    --font-family-primary: "Rubik";
+
+    /* Размеры шрифта */
+    --font-size-xs: 1.2rem;
+    --font-size-s: 1.4rem;
+    --font-size-m: 2rem;
+    --font-size-l: 3.6rem;
+    --font-size-xl: 5.8rem;
+
+    /* Толщина шрифта */
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Spacing (4px system) */
+    --space-0: 0;
+    --space-1: 0.4rem;
+    --space-2: 0.8rem;
+    --space-3: 1.2rem;
+    --space-4: 1.6rem;
+    --space-5: 2rem;
+    --space-6: 2.4rem;
+    --space-8: 3.2rem;
+    --space-10: 4rem;
+    --space-12: 4.8rem;
+    --space-16: 6.4rem;
+    --space-20: 8rem;
+
+    /* Тени */
+    --shadow: 0rem 0.4rem 0.4rem 0rem #C0C0C0;
+
+    /* Анимации */
+}

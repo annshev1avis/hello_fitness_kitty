@@ -1,0 +1,14 @@
+/* Global */
+@import "global/fonts.css";
+@import "global/reboot.css";
+@import "global/variables.css";
+
+/* Blocks */
+@import "blocks/body.css";
+@import "blocks/container.css";
+@import "blocks/footer.css";
+@import "blocks/header.css";
+@import "blocks/main.css";
+@import "blocks/nav.css";
+@import "blocks/root.css";
+@import "blocks/typography.css";

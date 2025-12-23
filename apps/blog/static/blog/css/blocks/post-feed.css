@@ -1,0 +1,11 @@
+.post-feed__posts {
+    display: flex;
+    max-height: 330px;
+    margin-bottom: var(--space-3);
+}
+
+.post-feed__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-1);
+}

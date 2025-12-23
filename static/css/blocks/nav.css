@@ -1,0 +1,12 @@
+.nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-12);
+}
+
+.nav__list {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-8);
+}

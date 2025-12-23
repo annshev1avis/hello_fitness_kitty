@@ -1,0 +1,64 @@
+.card {
+    display: flex;
+    background-color: var(--color-bg-secondary);
+    
+    border-radius: 2rem;
+    box-shadow: var(--shadow);
+
+    padding: 2rem;
+}
+
+.card_horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.card_vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: start;
+
+    max-width: 280px;
+    max-height: 330px;
+}
+
+.card_grid {
+    max-width: none;
+    max-height: none;
+}
+
+/* Картинка */
+.card__image {
+    object-fit: cover;
+    border-radius: 10px;
+    min-height: 0; 
+}
+
+.card__image_horizontal {
+    height: 100%;
+}
+
+.card__image_vertical {
+    width: 100%;
+}
+
+.card__image_full {
+    width: 100%;
+    height: auto;
+}
+
+/* Контент */
+.card__text {
+    margin-bottom: 10px;
+}
+
+.card__title {
+    margin-bottom: 5px;
+}
+
+.card__description {
+    color: var(--color-text-secondary);
+}

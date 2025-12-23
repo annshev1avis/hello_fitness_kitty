@@ -1,17 +1,65 @@
+import random
+
 from django.http import HttpResponse, JsonResponse
+from django.db.models import QuerySet
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
+
+from apps.blog.models import Category, Post
+
+
+GALLERY_LENGTH = 8
+    
+
+def get_best_posts():
+    return Post.objects.all().order_by("-views")
+
+
+def get_posts_by_categories():
+    """
+    Возвращает посты для главной страницы, сгруппированные по категориям,
+    в виде списка словарей:
+    [
+        {
+            "category": Category,
+            "posts": QuerySet[Post]
+        },
+    ]
+    """ 
+    return [
+        {
+            "category": category,
+            "posts": category.posts.all()[:GALLERY_LENGTH]
+        }
+        for category
+        in Category.objects.all().prefetch_related("posts")
+    ]
 
 
 def home_page(request):
-    return HttpResponse("Home page. Nice to see you")
+    return render(
+        request,
+        "blog/home_page.html",
+        {
+            "best_5_posts": get_best_posts()[:5],
+            "posts_by_category": get_posts_by_categories()
+        }
+    )
 
 
 def posts(request):
     return JsonResponse({"details": "All posts"})
 
 
-def single_post(request):
-    return HttpResponse("Single post")
+def single_post(request, post_slug):
+    return HttpResponse(f"Single post '{post_slug}'")
 
 
-def category(request):
-    return HttpResponse("All posts in category")
+def random_post(request):
+    post = random.choice(Post.objects.all())
+    
+    return redirect(reverse("blog:single_post", args=[post.slug]))
+
+
+def category(request, category_slug):
+    return HttpResponse(f"All posts in category '{category_slug}'")

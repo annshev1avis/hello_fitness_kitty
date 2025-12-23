@@ -1,0 +1,15 @@
+.button {
+    display: inline-block;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: var(--color-button);
+    transition: 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--color-button-hover);
+}
+
+.button:active {
+    background-color: var(--color-button-focus);
+}

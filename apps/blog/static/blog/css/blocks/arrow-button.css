@@ -1,0 +1,25 @@
+.arrow-button {
+    aspect-ratio: 1 / 1;
+    width: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--color-bg-secondary);
+    padding: var(--space-3);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: var(--shadow);
+
+    transition: 0.2s ease-out;
+}
+
+.arrow-button:hover {
+    transform: scale(1.05);
+}
+
+.arrow-button__icon {
+    width: 20px;
+    height: auto;
+}

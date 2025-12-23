@@ -38,7 +38,8 @@ class Post(models.Model):
     category = models.ForeignKey(
         Category,
         on_delete=models.RESTRICT,
-        verbose_name="Категория"
+        verbose_name="Категория",
+        related_name="posts",
     )
     slug = models.SlugField("Слаг", unique=True)
     
