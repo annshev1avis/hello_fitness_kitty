@@ -1,0 +1,9 @@
+.post-aside__title {
+    margin-bottom: var(--space-1);
+}
+
+.post_aside__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-2);
+}

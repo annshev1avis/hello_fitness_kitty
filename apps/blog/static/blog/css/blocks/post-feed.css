@@ -1,10 +1,10 @@
-.post-feed__posts {
+.post-gallery__posts {
     display: flex;
     max-height: 330px;
     margin-bottom: var(--space-3);
 }
 
-.post-feed__buttons {
+.post-gallery__buttons {
     display: flex;
     flex-direction: row;
     gap: var(--space-1);

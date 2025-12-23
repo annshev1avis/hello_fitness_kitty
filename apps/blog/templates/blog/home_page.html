@@ -16,34 +16,21 @@
         <h1 class="hero-section__name title-h1">Лучшие публикации</h2>
         <a class="hero-section__all_button label" href="{% url "blog:all_posts" %}">Смотреть все -&gt</a>
       </div>
-      {% include "blog/cards_grid.html" %}
+      {% include "blog/includes/cards_grid.html" %}
     </div>
   </section>
   {% for item in posts_by_category %}
-    <section class="category">
+    <section class="post-feed">
       <div class="container">
-        <div class="category__title">
-          <h2 class="category__name title-h2">{{ item.category.name }}</h2>
-          <a class="category__all_button label" href="{% url "blog:category" item.category.slug %}">Смотреть все -&gt</a>
+        <div class="post-feed__title">
+          <h2 class="title-h2">{{ item.category.name }}</h2>
+          <a class="label" href="">Смотреть все -&gt</a>
         </div>
+
         {% if item.posts %}
-          <div class="post-feed">
-            <div class="post-feed__posts">
-              {% for post in item.posts %}
-                {% include "blog/vertical_post.html" %}
-              {% endfor %}
-            </div>
-            <div class="post-feed__buttons">
-              <button class="arrow-button post-feed__button">
-                <img class="arrow-button__icon" src="{% static "blog/img/arrow left.svg" %}" alt="arrow left"/>
-              </button>
-              <button class="arrow-button post-feed__button">
-                <img class="arrow-button__icon" src="{% static "blog/img/arrow right.svg" %}" alt="arrow right"/>
-              </button>
-            </div>
-          </div>
+          {% include "blog/includes/posts-gallery.html" with posts=item.posts %}
         {% else %}
-          <p class="text">В этой категории пока нет постов</p>
+          <p class="text">Здесь пока нет постов</p>
         {% endif %}
       </div>
     </section>

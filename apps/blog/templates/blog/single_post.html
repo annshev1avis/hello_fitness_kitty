@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+{% load markdownify %}
+
+{% block title %}
+  {{ title.name }}
+{% endblock %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{% static "blog/css/blog_styles.css" %}">
+{% endblock %}
+
+{% block content %}
+  <article>
+    <div class="post-header">
+      <div class="container post-header__container">
+        <div class="post-header__text">
+          <h2 class="title-h2 post-header__name">{{ post.name }}</h2>
+          <div class="post-header__meta">
+            <span class="text post-header__meta-item">{{ post.category }}</span>
+            <span class="text post-header__meta-item">
+              Дата публикации: {{ post.pub_datetime|date:"d.m.Y"}}
+            </span>
+          </div>
+        </div>
+        <img class="post-header__image" src="{{ post.cover.url }}" alt="Обложка поста"/>
+      </div>
+    </div>
+
+    <div class="post-content">
+      <div class="container post-content__container">
+        <aside class="post-content__aside post-aside">
+          <div>
+            <h4 class="title-h4 post-aside__title">Время чтения</h4>
+            <p class="text text_secondary">{{ post.minutes_to_read }} мин.</p>
+          </div>
+          <nav class="post-nav">
+            <h4 class="title-h4 post-aside__title">В этом посте</h4>
+            <ol class="post-nav__list">
+              <li class="text text_secondary">Введение</li>
+              <li class="text text_secondary">Основные принципы построения тренировок</li>
+              <li class="text text_secondary">Практическая часть: составляем план</li>
+              <li class="text text_secondary">Заключение</li>
+            </ol>
+          </nav>
+          <div class="post_aside__buttons">
+            <button class="button text">Поделиться</button>
+            <button class="button">💖</button>
+          </div>
+        </aside>
+
+        <div class="markdown post-content__text">
+          {{ post.content|markdownify }}
+        </div>
+      </div>
+    </div>
+  </article>
+  
+  <div class="container">
+    <section class="post-feed">
+      <h2 class="title-h2 post-feed__title">Смотрите также</h2>
+
+      {% if recommended_posts %}
+        {% include "blog/includes/posts-gallery.html" with posts=recommended_posts %}
+      {% else %}
+        <p class="text">Здесь пока ничего нет</p>
+      {% endif %}
+    </section>
+  </div>
+{% endblock %}

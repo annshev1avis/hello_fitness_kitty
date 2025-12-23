@@ -23,6 +23,10 @@
     font-weight: var(--font-weight-normal);
 }
 
+.text_secondary {
+    color: var(--color-text-secondary);
+}
+
 .label {
     font-size: var(--font-size-s);
     font-weight: var(--font-weight-bold);

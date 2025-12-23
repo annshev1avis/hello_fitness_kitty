@@ -1,0 +1,4 @@
+.post-nav__list {
+    padding-left: var(--space-6);
+    list-style-type: decimal;
+}

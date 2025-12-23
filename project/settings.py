@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     "apps.pages.apps.PagesConfig",
     # Third-party приложения
     "mdeditor",
+    "markdownify",
     # Системные приложения
     "django.contrib.admin",
     "django.contrib.auth",
@@ -135,5 +136,20 @@ MDEDITOR_CONFIGS = {
             'delay': 3000,  # ms
             'uniqueId': 'content'
         },
+    }
+}
+
+# настройки 
+MARKDOWNIFY = {
+    "default": {
+        "MARKDOWN_EXTENSIONS": [
+            "markdown.extensions.extra",
+            "markdown.extensions.codehilite",
+        ],
+        "WHITELIST_TAGS": [
+            "p", "h2", "h3", "h4", "ul", "ol", "li",
+            "strong", "em", "a", "code", "pre", "blockquote"
+        ],
+        "WHITELIST_ATTRS": ["href", "src", "alt", "title",],
     }
 }

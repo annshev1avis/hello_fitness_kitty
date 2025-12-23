@@ -52,7 +52,11 @@ def posts(request):
 
 
 def single_post(request, post_slug):
-    return HttpResponse(f"Single post '{post_slug}'")
+    return render(
+        request,
+        "blog/single_post.html",
+        {"post": get_object_or_404(Post, slug=post_slug)}
+    )
 
 
 def random_post(request):

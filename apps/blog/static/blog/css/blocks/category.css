@@ -1,4 +1,4 @@
-.category__title {
+.post-feed__title {
     display: flex;
     flex-direction: row;
     gap: var(--space-2);

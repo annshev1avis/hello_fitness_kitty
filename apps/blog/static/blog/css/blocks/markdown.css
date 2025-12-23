@@ -1,0 +1,49 @@
+.markdown > :first-child {
+    margin-top: 0;
+}
+
+.markdown h2 {
+    font-size: var(--font-size-m2);
+    margin-top: var(--space-12);
+    margin-bottom: var(--space-2);
+}
+
+.markdown h3 {
+    font-size: var(--font-size-m);
+}
+
+.markdown h4 {
+    font-size: var(--font-size-s);
+}
+
+.markdown p {
+    font-size: var(--font-size-s);
+}
+
+.markdown ul {
+    font-size: var(--font-size-s);
+    padding-left: var(--space-10);
+}
+
+.markdown p, .markdown li {
+    margin-bottom: var(--space-2);
+    line-height: 1.5;
+}
+
+.markdown li {
+    margin-bottom: var(--space-2);
+}
+
+.markdown li::marker {
+    content: "- ";
+}
+
+.markdown code {
+    display: inline-block;
+    padding: var(--space-5) var(--space-4);
+    margin: var(--space-2) 0;
+    border-radius: 10px;
+
+    font-size: var(--font-size-s);
+    background-color: var(--color-bg-primary);
+}

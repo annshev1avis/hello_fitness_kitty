@@ -1,0 +1,17 @@
+{% load static %}
+
+<div class="post-feed">
+  <div class="post-feed__posts">
+    {% for post in posts %}
+      {% include "blog/includes/vertical_post.html" %}
+    {% endfor %}
+  </div>
+  <div class="post-feed__buttons">
+    <button class="arrow-button post-feed__button">
+      <img class="arrow-button__icon" src="{% static "blog/img/arrow left.svg" %}" alt="arrow left"/>
+    </button>
+    <button class="arrow-button post-feed__button">
+      <img class="arrow-button__icon" src="{% static "blog/img/arrow right.svg" %}" alt="arrow right"/>
+    </button>
+  </div>
+</div>

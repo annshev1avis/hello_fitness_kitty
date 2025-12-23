@@ -4,4 +4,9 @@
 @import "blocks/cards-grid.css";
 @import "blocks/category.css";
 @import "blocks/hero-section.css";
+@import "blocks/markdown.css";
+@import "blocks/post-aside.css";
+@import "blocks/post-content.css";
 @import "blocks/post-feed.css";
+@import "blocks/post-header.css";
+@import "blocks/post-nav.css";
