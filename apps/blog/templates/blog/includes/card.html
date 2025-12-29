@@ -1,0 +1,22 @@
+{% load static %}
+
+<div class="card {{ element_class }} {{ size_class }}
+ {{ orientation_class }}">
+  {% if post %}
+    {% if number %}
+      <span class="card__number">{{ number }}</span>
+    {% endif %}
+
+    {% if post.cover %}
+      <img class="card__image" src="{{ post.cover.url }}"/>
+    {% endif %}
+
+    <div class="card__content">
+      <h3 class="title-h3 card__title">{{ post.name }}</h3>
+      <p class="text card__description">{{ post.description }}</p>
+      <a class="button text">Читать</a>
+    </div>
+  {% else %}
+    {% comment %} здесь будет тег, который вставляет рандомную картинку для красоты {% endcomment %}
+  {% endif %}
+</div>

@@ -1,64 +1,76 @@
 .card {
-    display: flex;
     background-color: var(--color-bg-secondary);
-    
-    border-radius: 2rem;
+    border-radius: var(--space-5);
     box-shadow: var(--shadow);
-
-    padding: 2rem;
-}
-
-.card_horizontal {
+    padding: var(--space-5);
     display: flex;
-    flex-direction: row;
-    gap: 20px;
-    align-items: center;
 }
 
-.card_vertical {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: start;
 
-    max-width: 280px;
-    max-height: 330px;
-}
-
-.card_grid {
-    max-width: none;
-    max-height: none;
-}
-
-/* Картинка */
+/*
+    Нужно правильно настроить распределение
+    места Между Картинкой И Контентом!!!
+    Настраиваем
+    flex-grow
+    flex-shrink
+    flex-base
+*/
 .card__image {
     object-fit: cover;
-    border-radius: 10px;
-    min-height: 0; 
+    border-radius: 15px;
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
 }
 
-.card__image_horizontal {
-    height: 100%;
-}
-
-.card__image_vertical {
-    width: 100%;
-}
-
-.card__image_full {
-    width: 100%;
-    height: auto;
-}
-
-/* Контент */
-.card__text {
-    margin-bottom: 10px;
+.card_content {
+    flex: 0 0 auto;
+    min-width: 0;
 }
 
 .card__title {
-    margin-bottom: 5px;
+    margin-bottom: var(--space-1);
 }
 
 .card__description {
     color: var(--color-text-secondary);
+    margin-bottom: var(--space-3);
+}
+
+/* Модификации по ориентации */
+.card_orientation_vertical {
+    flex-direction: column;
+    gap: var(--space-5);
+    align-items: start;
+}
+
+.card_orientation_horizontal {
+    flex-direction: row;
+    gap: var(--space-5);
+    align-items: center;
+}
+
+.card_orientation_vertical
+.card__image {
+    width: 100%;
+}
+
+.card_orientation_horizontal
+.card__image {
+    height: 100%;
+}
+
+
+.card_size_m {
+    max-width: 270px;
+}
+
+.card_size_l {
+    width: 300px;
+    height: 430px;
+}
+
+.card_size_xl {
+    width: 360px;
+    height: 500px;
 }

@@ -1,7 +1,6 @@
 .post-gallery__posts {
     display: flex;
-    max-height: 330px;
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-4);
 }
 
 .post-gallery__buttons {

@@ -3,9 +3,9 @@
 <div class="post-gallery">
   <div class="post-gallery__posts">
     {% for post in posts %}
-      {% include "blog/includes/vertical_post.html" %}
+      {% include "blog/includes/card.html" with size_class="card_size_m" orientation_class="card_orientation_vertical" %}
     {% endfor %}
-  </div>
+  </div> 
   <div class="post-gallery__buttons">
     <button class="arrow-button post-gallery__button">
       <img class="arrow-button__icon" src="{% static "blog/img/arrow left.svg" %}" alt="arrow left"/>

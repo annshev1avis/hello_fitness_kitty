@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  {{ category.name }}: все посты
+{% endblock %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{% static "blog/css/blog_styles.css" %}">
+{% endblock %}
+
+{% block content %}
+  <section class="category-header">
+    <div class="container">
+      <h1 class="title-h1">{{ category.name }}</h1>
+      <p class="text">{{ category.description }}</p>
+      <div class="category-header__posts">
+        {% include "blog/includes/card.html" with post=posts.0 size_class="card_size_l" orientation_class="card_orientation_vertical" %}
+        {% include "blog/includes/card.html" with post=posts.0 size_class="card_size_xl" orientation_class="card_orientation_vertical" %}
+        {% include "blog/includes/card.html" with post=posts.0 size_class="card_size_l" orientation_class="card_orientation_vertical" %}
+      </div>
+    </div>
+  </section>
+{% endblock%}

@@ -66,4 +66,14 @@ def random_post(request):
 
 
 def category(request, category_slug):
-    return HttpResponse(f"All posts in category '{category_slug}'")
+    category = get_object_or_404(Category, slug=category_slug)
+    posts = Post.objects.filter(category=category)
+    
+    return render(
+        request,
+        "blog/category_page.html",
+        {
+            "category": category,
+            "posts": posts
+        }
+    )

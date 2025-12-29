@@ -16,7 +16,7 @@
         <h1 class="hero-section__name title-h1">Лучшие публикации</h2>
         <a class="hero-section__all_button label" href="{% url "blog:all_posts" %}">Смотреть все -&gt</a>
       </div>
-      {% include "blog/includes/cards_grid.html" %}
+      {% include "blog/includes/cards_grid.html" with posts=best_5_posts %}
     </div>
   </section>
   {% for item in posts_by_category %}
@@ -28,7 +28,7 @@
         </div>
 
         {% if item.posts %}
-          {% include "blog/includes/posts-gallery.html" with posts=item.posts %}
+          {% include "blog/includes/posts_gallery.html" with posts=item.posts %}
         {% else %}
           <p class="text">Здесь пока нет постов</p>
         {% endif %}
