@@ -3,27 +3,21 @@
     border-radius: var(--space-5);
     box-shadow: var(--shadow);
     padding: var(--space-5);
-    display: grid;
 }
 
 .card_orientation_vertical {
-    grid-template-rows: minmax(20%, 1fr) min-content;
-    gap: var(--space-5);
+    display: flex;
+    flex-direction: column;
     align-items: start;
-    grid-template-areas:
-        "image"
-        "content";
-    container: card_orientation_vertical / size;
+    gap: var(--space-5);
 }
 
 .card_orientation_horizontal {
-    grid-template-columns: minmax(40%, 1fr) auto;
-    height: 200px;
-    gap: var(--space-5);
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    grid-template-areas:
-        "image content";
-    container: card_orientation_horizontal / size;
+    justify-content: center;
+    gap: var(--space-5);
 }
 
 .card_orientation_vertical .card_with-number {
@@ -41,7 +35,6 @@
 }
 
 .card__image {
-    grid-area: image;
     object-fit: cover;
     border-radius: 15px;
     min-width: 0;
@@ -50,6 +43,7 @@
 
 .card__image_orientation_vertical {
     width: 100%;
+    min-height: 20%;
     max-height: 100%;
 }
 
@@ -59,8 +53,11 @@
 }
 
 .card__content {
-    grid-area: content;
-    min-width: 0; /* для правильного переноса текста */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: start;
+    justify-content: space-between;
 }
 
 .card__title {
@@ -73,7 +70,9 @@
 }
 
 .card_size_m {
-    height: 420px;
+    height: min-content;
+    min-height: 100px;
+    max-height: 420px;
     width: 270px;
 }
 
@@ -90,9 +89,10 @@
 .card_size_grid {
     height: 100%;
     width: 100%;
+    container: card_size_grid / size;
 }
 
-@container card_orientation_vertical (height < 350px) {
+@container card_size_grid (width < 250px) and (height < 300px) {
     .card__title {
         font-size: var(--font-size-s);
     }

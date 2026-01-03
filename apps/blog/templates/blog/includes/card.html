@@ -18,8 +18,10 @@
     {% endif %}
 
     <div class="card__content">
-      <h3 class="title-h3 card__title">{{ post.name }}</h3>
-      <p class="text card__description">{{ post.description|truncatewords:10 }}</p>
+      <div class="card__text">
+        <h3 class="title-h3 card__title">{{ post.name }}</h3>
+        <p class="text card__description">{{ post.description|truncatewords:10 }}</p>
+      </div>
       <a class="button text card__button">Читать</a>
     </div>
   {% else %}
