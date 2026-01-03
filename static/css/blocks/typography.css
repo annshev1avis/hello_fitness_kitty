@@ -1,6 +1,7 @@
 .title-h1 {
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
+    line-height: 0.9;
 }
 
 .title-h2 {

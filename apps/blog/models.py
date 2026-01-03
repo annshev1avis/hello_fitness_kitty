@@ -29,7 +29,14 @@ class Post(models.Model):
         help_text="Одно-два предложения",
         max_length=200,
     )
-    content = MDTextField("Содержание поста")
+    content = MDTextField(
+        "Содержание поста",
+        help_text="""Используйте формат .md. 
+        Доступные теги: 'p', 'h2',
+        'h3', 'h4', 'ul', 'ol', 'li',
+        'strong', 'em', 'a', 'code', 'pre', 
+        'blockquote'"""
+    )
     cover = models.FileField(
         "Обложка",
         upload_to="post_covers/",

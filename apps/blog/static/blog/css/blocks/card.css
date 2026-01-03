@@ -3,29 +3,64 @@
     border-radius: var(--space-5);
     box-shadow: var(--shadow);
     padding: var(--space-5);
-    display: flex;
+    display: grid;
 }
 
+.card_orientation_vertical {
+    grid-template-rows: minmax(20%, 1fr) min-content;
+    gap: var(--space-5);
+    align-items: start;
+    grid-template-areas:
+        "image"
+        "content";
+    container: card_orientation_vertical / size;
+}
 
-/*
-    Нужно правильно настроить распределение
-    места Между Картинкой И Контентом!!!
-    Настраиваем
-    flex-grow
-    flex-shrink
-    flex-base
-*/
+.card_orientation_horizontal {
+    grid-template-columns: minmax(40%, 1fr) auto;
+    height: 200px;
+    gap: var(--space-5);
+    align-items: center;
+    grid-template-areas:
+        "image content";
+    container: card_orientation_horizontal / size;
+}
+
+.card_orientation_vertical .card_with-number {
+    grid-template-columns: auto minmax(30%, 1fr) auto;
+    grid-template-areas:
+        "number"
+        "image"
+        "content";
+}
+
+.card_orientation_horizontal .card_with-number {
+    grid-template-columns: auto 1fr 1fr;
+    grid-template-areas:
+        "number image content";
+}
+
 .card__image {
+    grid-area: image;
     object-fit: cover;
     border-radius: 15px;
-    flex: 1 1 auto;
-    min-height: 0;
     min-width: 0;
+    min-height: 0;
 }
 
-.card_content {
-    flex: 0 0 auto;
-    min-width: 0;
+.card__image_orientation_vertical {
+    width: 100%;
+    max-height: 100%;
+}
+
+.card__image_orientation_horizontal {
+    height: 100%;
+    width: 100%;
+}
+
+.card__content {
+    grid-area: content;
+    min-width: 0; /* для правильного переноса текста */
 }
 
 .card__title {
@@ -37,32 +72,9 @@
     margin-bottom: var(--space-3);
 }
 
-/* Модификации по ориентации */
-.card_orientation_vertical {
-    flex-direction: column;
-    gap: var(--space-5);
-    align-items: start;
-}
-
-.card_orientation_horizontal {
-    flex-direction: row;
-    gap: var(--space-5);
-    align-items: center;
-}
-
-.card_orientation_vertical
-.card__image {
-    width: 100%;
-}
-
-.card_orientation_horizontal
-.card__image {
-    height: 100%;
-}
-
-
 .card_size_m {
-    max-width: 270px;
+    height: 420px;
+    width: 270px;
 }
 
 .card_size_l {
@@ -73,4 +85,19 @@
 .card_size_xl {
     width: 360px;
     height: 500px;
+}
+
+.card_size_grid {
+    height: 100%;
+    width: 100%;
+}
+
+@container card_orientation_vertical (height < 350px) {
+    .card__title {
+        font-size: var(--font-size-s);
+    }
+
+    .card__description, .card__button {
+        font-size: var(--font-size-xs);
+    }
 }

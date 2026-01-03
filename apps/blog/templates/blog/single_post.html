@@ -23,8 +23,10 @@
             </span>
           </div>
         </div>
-        <img class="post-header__image" src="{{ post.cover.url }}" alt="Обложка поста"/>
-      </div>
+        {% if post.cover %}
+          <img class="post-header__image" src="{{ post.cover.url }}" alt="Обложка поста"/>
+        {% endif %}
+        </div>
     </div>
 
     <div class="post-content">

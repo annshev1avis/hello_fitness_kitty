@@ -8,13 +8,19 @@
     {% endif %}
 
     {% if post.cover %}
-      <img class="card__image" src="{{ post.cover.url }}"/>
+      <img class="card__image
+      {% if orientation_class == "card_orientation_vertical" %}
+        card__image_orientation_vertical
+      {% else %}
+        card__image_orientation_horizontal
+      {% endif %}"
+      src="{{ post.cover.url }}"/>
     {% endif %}
 
     <div class="card__content">
       <h3 class="title-h3 card__title">{{ post.name }}</h3>
-      <p class="text card__description">{{ post.description }}</p>
-      <a class="button text">Читать</a>
+      <p class="text card__description">{{ post.description|truncatewords:10 }}</p>
+      <a class="button text card__button">Читать</a>
     </div>
   {% else %}
     {% comment %} здесь будет тег, который вставляет рандомную картинку для красоты {% endcomment %}

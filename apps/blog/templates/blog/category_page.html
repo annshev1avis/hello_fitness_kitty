@@ -11,13 +11,29 @@
 
 {% block content %}
   <section class="category-header">
+    <div class="container category-header__container">
+      <div class="category-header__text">
+        <h1 class="title-h1 category-header__name">{{ category.name }}</h1>
+        <p class="text category-header__description">{{ category.description }}</p>
+      </div>
+      {% if posts|length >= 3 %}
+        <div class="category-header__posts">
+          {% include "blog/includes/card.html" with post=posts.0 size_class="card_size_l" orientation_class="card_orientation_vertical" %}
+          {% include "blog/includes/card.html" with post=posts.1 size_class="card_size_xl" orientation_class="card_orientation_vertical" %}
+          {% include "blog/includes/card.html" with post=posts.2 size_class="card_size_l" orientation_class="card_orientation_vertical" %}
+        </div>
+      {% endif %}
+    </div>
+  </section>
+  <section class="posts">
     <div class="container">
-      <h1 class="title-h1">{{ category.name }}</h1>
-      <p class="text">{{ category.description }}</p>
-      <div class="category-header__posts">
-        {% include "blog/includes/card.html" with post=posts.0 size_class="card_size_l" orientation_class="card_orientation_vertical" %}
-        {% include "blog/includes/card.html" with post=posts.0 size_class="card_size_xl" orientation_class="card_orientation_vertical" %}
-        {% include "blog/includes/card.html" with post=posts.0 size_class="card_size_l" orientation_class="card_orientation_vertical" %}
+      <h2 class="title-h2 posts__title">Все посты</h2>
+      <div class="posts__list">
+        {% for post in posts %}
+          {% include "blog/includes/card.html" with size_class="card_size_m" orientation_class="card_orientation_vertical" %}
+        {% empty %}
+          <p class="text">Здесь пока ничего нет</p>
+        {% endfor %}
       </div>
     </div>
   </section>

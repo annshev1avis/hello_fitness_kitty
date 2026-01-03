@@ -2,7 +2,7 @@
 
 <div class="cards-grid">
   <div class="card card_size_grid card_orientation_horizontal cards-grid__card-1">
-    <img class="card__image"
+    <img class="card__image card__image_orientation_horizontal"
       src="{% static 'img/fitness legs.jpg'%}"
       alt="Девушка занимается фитнесом"/>
 
@@ -12,7 +12,7 @@
   </div>
 
   <div class="card card_size_grid cards-grid__card-2">
-    {% comment %} <img class="card__image card__image_full" src="{% static 'img/cat_nyan.gif'%}"/> {% endcomment %}
+    <img class="card__image card__image_orientation_horizontal" src="{% static 'img/cat_nyan.gif'%}"/>
   </div>
 
   {% include "blog/includes/card.html" with post=posts.0 element_class="cards-grid__card-3" size_class="card_size_grid" orientation_class="card_orientation_vertical" %}

@@ -16,7 +16,7 @@
 }
 
 .arrow-button:hover {
-    transform: scale(1.05);
+    background-color: var(--color-button-hover);
 }
 
 .arrow-button__icon {

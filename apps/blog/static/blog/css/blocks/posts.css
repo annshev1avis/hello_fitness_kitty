@@ -1,0 +1,10 @@
+.posts__title {
+    margin-bottom: var(--space-4);
+}
+
+.posts__list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+}
