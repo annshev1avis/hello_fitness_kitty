@@ -45,6 +45,7 @@
     width: 100%;
     min-height: 20%;
     max-height: 100%;
+    flex-basis: 100%;
 }
 
 .card__image_orientation_horizontal {
@@ -58,6 +59,7 @@
     height: 100%;
     align-items: start;
     justify-content: space-between;
+    flex-grow: 0;
 }
 
 .card__title {
@@ -70,10 +72,8 @@
 }
 
 .card_size_m {
-    height: min-content;
-    min-height: 100px;
-    max-height: 420px;
-    width: 270px;
+    height: 380px;
+    width: 260px;
 }
 
 .card_size_l {

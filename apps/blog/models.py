@@ -1,7 +1,12 @@
 import math
+import re
 
+from django.contrib import admin
 from django.db import models
 from mdeditor.fields import MDTextField
+
+
+FIND_H2_PATTERN = re.compile(r"^## (.+)", re.MULTILINE)
 
 
 class Category(models.Model):
@@ -24,7 +29,7 @@ class Category(models.Model):
 class Post(models.Model):
     # Основные поля
     name = models.CharField("Название", max_length=200)
-    description = models.CharField(
+    description = models.TextField(
         "Краткое описание",
         help_text="Одно-два предложения",
         max_length=200,
@@ -40,7 +45,8 @@ class Post(models.Model):
     cover = models.FileField(
         "Обложка",
         upload_to="post_covers/",
-        null=True
+        null=True,
+        blank=True,
     )
     category = models.ForeignKey(
         Category,
@@ -49,6 +55,13 @@ class Post(models.Model):
         related_name="posts",
     )
     slug = models.SlugField("Слаг", unique=True)
+    recommended_posts = models.ManyToManyField(
+        "self",
+        blank=True,
+        symmetrical=False,
+        verbose_name="Рекомендуемые посты",
+        help_text='Посты, которые рекомендуются после прочтения этого'
+    )
     
     # Настройки видимости
     is_published = models.BooleanField("Опубликован", default=False)
@@ -67,6 +80,7 @@ class Post(models.Model):
         return f"'{self.name}'"
     
     @property
+    @admin.display(description="Время чтения (мин.)")
     def minutes_to_read(self):
         """
         Время чтения статьи в минутах
@@ -74,4 +88,11 @@ class Post(models.Model):
         word_count = len(self.content.split())
         avg_reading_speed = 200  # слов в минуту
         
-        return  math.ceil(word_count / avg_reading_speed)
+        return math.ceil(word_count / avg_reading_speed)
+    
+    @property
+    def table_of_contents(self):
+        """
+        Формирует содержание статьи, извлекая список заголовков 2-го уровня
+        """
+        return FIND_H2_PATTERN.findall(self.content)

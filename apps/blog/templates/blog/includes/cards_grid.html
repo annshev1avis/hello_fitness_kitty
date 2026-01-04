@@ -12,10 +12,10 @@
     <img class="card__image card__image_orientation_horizontal" src="{% static 'img/cat_nyan.gif'%}"/>
   </div>
 
-  {% include "blog/includes/card.html" with post=posts.0 element_class="cards-grid__card-3" size_class="card_size_grid" orientation_class="card_orientation_vertical" %}
-  {% include "blog/includes/card.html" with post=posts.1 element_class="cards-grid__card-4" size_class="card_size_grid" orientation_class="card_orientation_vertical" %}
-  {% include "blog/includes/card.html" with post=posts.2 element_class="cards-grid__card-5" size_class="card_size_grid" orientation_class="card_orientation_vertical" %}
-  {% include "blog/includes/card.html" with post=posts.3 element_class="cards-grid__card-6" size_class="card_size_grid" orientation_class="card_orientation_vertical" %}
-  {% include "blog/includes/card.html" with post=posts.4 element_class="cards-grid__card-7" size_class="card_size_grid" orientation_class="card_orientation_vertical" %}
+  {% include "blog/includes/card.html" with post=posts.0 element_class="cards-grid__card-3" size_class="card_size_grid" orientation_class="card_orientation_vertical" backup_image_url="img/dancing.jpg" %}
+  {% include "blog/includes/card.html" with post=posts.1 element_class="cards-grid__card-4" size_class="card_size_grid" orientation_class="card_orientation_vertical" backup_image_url="img/stretching classes.jpg" %}
+  {% include "blog/includes/card.html" with post=posts.2 element_class="cards-grid__card-5" size_class="card_size_grid" orientation_class="card_orientation_vertical" backup_image_url="img/healthy breakfast.jpg" %}
+  {% include "blog/includes/card.html" with post=posts.3 element_class="cards-grid__card-6" size_class="card_size_grid" orientation_class="card_orientation_vertical" backup_image_url="img/pull up.jpg" %}
+  {% include "blog/includes/card.html" with element_class="cards-grid__card-7" size_class="card_size_grid" orientation_class="card_orientation_vertical" backup_image_url="img/strong squad.jpg" %}
   
 </div>

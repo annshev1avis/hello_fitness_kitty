@@ -39,10 +39,9 @@
           <nav class="post-nav">
             <h4 class="title-h4 post-aside__title">В этом посте</h4>
             <ol class="post-nav__list">
-              <li class="text text_secondary">Введение</li>
-              <li class="text text_secondary">Основные принципы построения тренировок</li>
-              <li class="text text_secondary">Практическая часть: составляем план</li>
-              <li class="text text_secondary">Заключение</li>
+              {% for title in post.table_of_contents %}
+                <li class="text text_secondary">{{ title }}</li>
+              {% endfor %}
             </ol>
           </nav>
           <div class="post_aside__buttons">
@@ -62,8 +61,8 @@
     <section class="post-feed">
       <h2 class="title-h2 post-feed__title">Смотрите также</h2>
 
-      {% if recommended_posts %}
-        {% include "blog/includes/posts-gallery.html" with posts=recommended_posts %}
+      {% if post.recommended_posts|length %}
+        {% include "blog/includes/posts_gallery.html" with posts=post.recommended_posts.all %}
       {% else %}
         <p class="text">Здесь пока ничего нет</p>
       {% endif %}

@@ -24,7 +24,7 @@
       <div class="container">
         <div class="post-feed__title">
           <h2 class="title-h2">{{ item.category.name }}</h2>
-          <a class="label" href="">Смотреть все -&gt</a>
+          <a class="label" href="{% url "blog:category" item.category.slug %}">Смотреть все -&gt</a>
         </div>
 
         {% if item.posts %}

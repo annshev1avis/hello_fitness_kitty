@@ -47,3 +47,11 @@
     font-size: var(--font-size-s);
     background-color: var(--color-bg-primary);
 }
+
+.markdown img {
+    border-radius: 15px;
+    max-height: 500px;
+    width: 80%;
+    object-fit: cover;
+    margin: var(--space-4) auto;
+}

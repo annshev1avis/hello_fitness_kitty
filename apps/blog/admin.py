@@ -15,20 +15,72 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class PostAdmin(admin.ModelAdmin):
     list_display = [
-        "name", "description", "category", "is_published", "pub_datetime"
+        "name",
+        "description",
+        "category",
+        "is_published",
+        "pub_datetime"
     ]
-    fieldsets = [
-        (None, {"fields": ["name", "description", "category", "content", "slug"]}),
-        ("Настройки видимости", {"fields": ["is_published"]}),
-        ("Неизменяемые поля", {"fields": ["pub_datetime", "edited_datetime", "views", "minutes_to_read"]})
-    ]
-    readonly_fields = ["pub_datetime", "edited_datetime", "views", "minutes_to_read"]
-    search_fields = ["name", "description", "content"]
     
-    def get_form(self, request, obj = ..., change = ..., **kwargs):
-        form = super().get_form(request, obj, change, **kwargs)
-        form.base_fields["description"].widget = forms.Textarea()
-        return form
+    fieldsets = [
+        (
+            None,
+            {
+                "fields": [
+                    "name",
+                    "description",
+                    "category",
+                    "content",
+                    "slug",
+                    "cover",
+                    "recommended_posts"
+                ]
+            }
+        ),
+        (
+            "Настройки видимости",
+            {
+                "fields": ["is_published"]
+            }
+        ),
+        (
+            "Неизменяемые поля",
+            {
+                "fields": [
+                    "pub_datetime",
+                    "edited_datetime",
+                    "views",
+                    "minutes_to_read",
+                    "table_of_contents_formatted"
+                ]
+            }
+        )
+    ]
+    
+    readonly_fields = [
+        "pub_datetime",
+        "edited_datetime",
+        "views",
+        "minutes_to_read",
+        "table_of_contents_formatted"
+    ]
+    
+    search_fields = [
+        "name",
+        "description",
+        "content"
+    ]
+    
+    filter_horizontal = ["recommended_posts"]
+    
+    @admin.display(description="Содержание")
+    def table_of_contents_formatted(self, obj):
+        """Форматирует оглавление для отображения в админке."""
+        result = []
+        for title in obj.table_of_contents:
+            result.append(f"- {title}")
+        return "".join(result)
+
 
 admin.site.register(models.Category, CategoryAdmin)
 admin.site.register(models.Post, PostAdmin)

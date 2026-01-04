@@ -22,9 +22,9 @@
         <h3 class="title-h3 card__title">{{ post.name }}</h3>
         <p class="text card__description">{{ post.description|truncatewords:10 }}</p>
       </div>
-      <a class="button text card__button">Читать</a>
+      <a class="button text card__button" href="{% url "blog:single_post" post.slug %}">Читать</a>
     </div>
   {% else %}
-    {% comment %} здесь будет тег, который вставляет рандомную картинку для красоты {% endcomment %}
+    <img class="card__image card__image_orientation_horizontal" src="{% static backup_image_url %}"/>
   {% endif %}
 </div>

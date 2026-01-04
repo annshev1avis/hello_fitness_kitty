@@ -136,6 +136,9 @@ MDEDITOR_CONFIGS = {
             'delay': 3000,  # ms
             'uniqueId': 'content'
         },
+        
+        # Другое
+        'emoji': True,
     }
 }
 
@@ -147,9 +150,11 @@ MARKDOWNIFY = {
             "markdown.extensions.codehilite",
         ],
         "WHITELIST_TAGS": [
-            "p", "h2", "h3", "h4", "ul", "ol", "li",
+            "p", "h2", "h3", "h4", "ul", "ol", "li", "img",
             "strong", "em", "a", "code", "pre", "blockquote"
         ],
         "WHITELIST_ATTRS": ["href", "src", "alt", "title",],
     }
 }
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
