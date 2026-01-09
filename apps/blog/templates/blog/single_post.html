@@ -61,11 +61,13 @@
     <section class="post-feed">
       <h2 class="title-h2 post-feed__title">Смотрите также</h2>
 
-      {% if post.recommended_posts|length %}
-        {% include "blog/includes/posts_gallery.html" with posts=post.recommended_posts.all %}
-      {% else %}
-        <p class="text">Здесь пока ничего нет</p>
-      {% endif %}
+      {% with post.recommended_posts.all as recommended_posts %}
+        {% if recommended_posts|length %}
+          {% include "blog/includes/posts_gallery.html" with posts=recommended_posts %}
+        {% else %}
+          <p class="text">Здесь пока ничего нет</p>
+        {% endif %}
+      {% endwith %}
     </section>
   </div>
 {% endblock %}

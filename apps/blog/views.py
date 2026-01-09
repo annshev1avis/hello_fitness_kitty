@@ -11,10 +11,6 @@ from apps.blog.models import Category, Post
 GALLERY_LENGTH = 8
     
 
-def get_best_posts():
-    return Post.objects.all().order_by("-views")
-
-
 def get_posts_by_categories():
     """
     Возвращает посты для главной страницы, сгруппированные по категориям,
@@ -32,7 +28,7 @@ def get_posts_by_categories():
             "posts": category.posts.all()[:GALLERY_LENGTH]
         }
         for category
-        in Category.objects.all().prefetch_related("posts")
+        in Category.objects.prefetch_related("posts")
     ]
 
 
@@ -41,7 +37,7 @@ def home_page(request):
         request,
         "blog/home_page.html",
         {
-            "best_5_posts": get_best_posts()[:5],
+            "best_5_posts": list(Post.objects.order_by("-views")[:4]),
             "posts_by_category": get_posts_by_categories()
         }
     )
@@ -55,7 +51,11 @@ def single_post(request, post_slug):
     return render(
         request,
         "blog/single_post.html",
-        {"post": get_object_or_404(Post, slug=post_slug)}
+        {"post": get_object_or_404(
+            Post.objects.select_related("category")
+            .prefetch_related("recommended_posts"),
+            slug=post_slug
+        )}
     )
 
 
