@@ -1,0 +1,12 @@
+.dialog {
+    position: static;
+    margin: 0px 0px;
+    width: 100%;
+    border: none;
+    border-radius: var(--space-3);
+    cursor: pointer;
+}
+
+.dialog__title {
+    margin-bottom: var(--space-2);
+}

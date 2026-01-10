@@ -45,9 +45,14 @@
             </ol>
           </nav>
           <div class="post_aside__buttons">
-            <button class="button text">Поделиться</button>
-            <button class="button">💖</button>
+            <button class="icon icon_tg" data-action="share-tg"></button>
+            <button class="icon icon_link" data-action="share-link"></button>
+            <button class="icon icon_heart" data-action="like"></button>
           </div>
+          <dialog class="dialog" aria-labelledby="dialog__title">
+            <h4 class="dialog__title title-h4"></h4>
+            <p class="dialog__text text text_secondary"></p>
+          </dialog>
         </aside>
 
         <div class="markdown post-content__text">
@@ -70,4 +75,8 @@
       {% endwith %}
     </section>
   </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static "blog/js/icons.js" %}"></script>
 {% endblock %}
