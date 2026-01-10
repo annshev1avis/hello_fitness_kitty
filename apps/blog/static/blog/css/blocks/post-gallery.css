@@ -1,7 +1,8 @@
+.post-gallery {
+    padding: var(--space-3);
+}
+
 .post-gallery__posts {
-    display: flex;
-    flex-direction: row;
-    gap: var(--space-4);
     margin-bottom: var(--space-4);
 }
 

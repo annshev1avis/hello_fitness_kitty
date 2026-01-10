@@ -1,16 +1,16 @@
 {% load static %}
 
-<div class="post-gallery">
-  <div class="post-gallery__posts">
+<div class="post-gallery swiper">
+  <div class="post-gallery__posts swiper-wrapper">
     {% for post in posts %}
-      {% include "blog/includes/card.html" with size_class="card_size_m" orientation_class="card_orientation_vertical" %}
+      {% include "blog/includes/card.html" with size_class="card_size_m" orientation_class="card_orientation_vertical" swiper_class="swiper-slide" %}
     {% endfor %}
   </div> 
   <div class="post-gallery__buttons">
-    <button class="arrow-button post-gallery__button">
-      <img class="arrow-button__icon" src="{% static "blog/img/arrow left.svg" %}" alt="arrow left"/>
+    <button class="arrow-button post-gallery__button_prev">
+      <img class="arrow-button__icon " src="{% static "blog/img/arrow left.svg" %}" alt="arrow left"/>
     </button>
-    <button class="arrow-button post-gallery__button">
+    <button class="arrow-button post-gallery__button_next">
       <img class="arrow-button__icon" src="{% static "blog/img/arrow right.svg" %}" alt="arrow right"/>
     </button>
   </div>
