@@ -1,10 +1,10 @@
 @import "blocks/arrow-button.css";
 @import "blocks/card.css";
-@import "blocks/cards-grid.css";
 @import "blocks/category-header.css";
 @import "blocks/category.css";
 @import "blocks/dialog.css";
 @import "blocks/hero-section.css";
+@import "blocks/homepage-grid.css";
 @import "blocks/icon.css";
 @import "blocks/markdown.css";
 @import "blocks/post-aside.css";
@@ -13,3 +13,4 @@
 @import "blocks/post-header.css";
 @import "blocks/post-nav.css";
 @import "blocks/posts.css";
+@import "blocks/top.css";

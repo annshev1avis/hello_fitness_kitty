@@ -44,7 +44,20 @@ def home_page(request):
 
 
 def posts(request):
-    return JsonResponse({"details": "All posts"})
+    posts = Post.objects.all().order_by("-views")
+    context = {}
+    
+    if len(posts) >= 5:
+        context["best_5_posts"] = posts[:5]
+        context["posts"] = posts[5:]
+    else:
+        context["posts"] = posts
+    
+    return render(
+        request,
+        "blog/all_posts.html",
+        context,
+    )
 
 
 def single_post(request, post_slug):

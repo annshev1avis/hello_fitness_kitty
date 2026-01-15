@@ -25,16 +25,5 @@
       {% endif %}
     </div>
   </section>
-  <section class="posts">
-    <div class="container">
-      <h2 class="title-h2 posts__title">Все посты</h2>
-      <div class="posts__list">
-        {% for post in posts %}
-          {% include "blog/includes/card.html" with size_class="card_size_m" orientation_class="card_orientation_vertical" %}
-        {% empty %}
-          <p class="text">Здесь пока ничего нет</p>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
+  {% include "blog/includes/posts.html" %}
 {% endblock%}

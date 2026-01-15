@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  Все посты
+{% endblock %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{% static "blog/css/blog_styles.css" %}">
+{% endblock %}
+
+
+
+{% block content %}
+  {% if best_5_posts %}
+    <section class="top">
+      <div class="container">
+        <h1 class="title-h1 top__title">ТОП-5</h1>
+        <div class="top__grid">
+          {% include "blog/includes/card.html" with post=best_5_posts.0 element_class="top__card-1" size_class="card_size_grid" orientation_class="card_orientation_horizontal" number=1 backup_image_url="img/dancing.jpg" %}
+          {% include "blog/includes/card.html" with post=best_5_posts.1 element_class="top__card-2" size_class="card_size_grid" orientation_class="card_orientation_horizontal" number=2 backup_image_url="img/stretching classes.jpg" %}
+          {% include "blog/includes/card.html" with post=best_5_posts.2 element_class="top__card-3" size_class="card_size_grid" orientation_class="card_orientation_vertical" number=3 backup_image_url="img/healthy breakfast.jpg" %}
+          {% include "blog/includes/card.html" with post=best_5_posts.3 element_class="top__card-4" size_class="card_size_grid" orientation_class="card_orientation_vertical" number=4 backup_image_url="img/pull up.jpg" %}
+          {% include "blog/includes/card.html" with post=best_5_posts.4 element_class="top__card-5" size_class="card_size_grid" orientation_class="card_orientation_vertical" number=5 backup_image_url="img/strong squad.jpg" %}
+        </div>
+      </div>
+    </section>
+  {% endif %} 
+
+  {% include "blog/includes/posts.html" %}
+{% endblock %}
