@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{% static "pages/css/styles.css" %}"/>
+{% endblock %}
+
+{% block content %}
+  <section class="about-me">
+    <div class="container about-me__container">
+      <img class="about-me__image" src="{% static "pages/img/me.jpg" %}"/>
+      <div class="about-me__title-container">
+        <h2 class="title-h2">Всем привет!</h2>
+        <h3 class="title-h3">Меня зовут Аня и я <span class="orange">веду этот блог ;)</span></h3>
+      </div>
+      <div class="text about-me__text">
+        <p class="text">Привет! Я занимаюсь фитнесом уже 1 год, и это помогает мне:</p>
+        <ul class="text bulleted-list">
+          <li>отлично себя чувствовать</li>
+          <li>и выглядеть как супер-пупер фитоняшка.</li>
+        </ul>
+        <br>
+        <p class="text">
+          Фитнес - это круто! Поэтому в своем блоге я хочу поделиться советами и мотивацией для начинащих<br>
+          <br>
+          Интересный факт: будучи начинающим разработчиком, я написала код этого сайтика сама 😊
+        </p>
+      </div>
+      <div class="about-me__contacts">
+        {% comment %} <a class="icon icon-tg"></a>
+        <a class="icon icon-github"></a> {% endcomment %}
+        <a class="button text button_color_orange" href="https://t.me/HellooDarling">Я в Telegram 🤍</a>
+        <a class="button text button_color_orange" href="https://github.com/annshev1avis">Мой Github 💻</a>
+      </div>
+    </div>
+  </section>
+{% endblock %}

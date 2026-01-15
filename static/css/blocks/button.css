@@ -1,4 +1,5 @@
 .button {
+    cursor: pointer;
     display: inline-block;
     padding: 1rem;
     border-radius: 1rem;
@@ -14,4 +15,13 @@
 
 .button:active {
     background-color: var(--color-button-focus);
+}
+
+.button_color_orange {
+    color: var(--color-text-3);
+    background-color: var(--accent-color-1);
+}
+
+.button_color_orange:hover {
+    background-color: var(--accent-color-1-hover);
 }

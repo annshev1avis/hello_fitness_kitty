@@ -7,10 +7,14 @@
     <title>{% block title %}{% endblock %}</title>
     <meta name="description" content="Это блог для девушек о фитнесе и здоровом образе жизни">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static "img/fav.ico" %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
     <!--Подключение библиотеки Swiper-->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!--Для подключения дополнительных css-->
     {% block stylesheets %}{% endblock %}
   </head>
   <body>
@@ -22,6 +26,7 @@
             {% for category in categories %}
               <li class="nav__item text"><a href={% url "blog:category" category.slug %}>{{ category.name }}</a></li>
             {% endfor %}
+            <li class="nav__item text"><a href={% url "pages:about_me" %}>Обо мне</a></li>
           </ul>
         </nav>
       </div>
@@ -35,7 +40,7 @@
           <a class="title-h3" href="{% url "blog:home_page" %}">Hello fitness kitty!</a>
           <ul class="nav__list">
             <li class="nav__item label"><a href={% url "blog:random_post" %}>В случайный интересный пост -&gt</a></li>
-            <li class="nav__item label"><a>Об авторе -&gt</a></li>
+            <li class="nav__item label"><a href="{% url "pages:about_me" %}">Об авторе -&gt</a></li>
           </ul>
         </nav>
         <h4 class="footer__copyright text">Этот сайтик сделан Анюткой ❤️</h4>

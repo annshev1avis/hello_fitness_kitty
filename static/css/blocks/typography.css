@@ -33,3 +33,16 @@
     font-weight: var(--font-weight-bold);
     font-style: italic;
 }
+
+.orange {
+    color: var(--accent-color-1);
+}
+
+.bulleted-list {
+    list-style: none;
+    padding-left: var(--space-10);
+}
+
+.bulleted-list li::marker {
+  content: "• ";
+}
