@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     # Мои приложения
     "apps.blog.apps.BlogConfig",
     "apps.pages.apps.PagesConfig",
+    "apps.users.apps.UsersConfig",
     # Third-party приложения
     "mdeditor",
     "markdownify",
@@ -78,6 +79,12 @@ DATABASES = {
     }
 }
 
+# Настройки аутентификации
+AUTH_USER_MODEL = "users.User"
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+]
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -117,7 +124,6 @@ MEDIA_URL = "/media/"  # URL-префикс для доступа к медиа�
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
 # Настройки md-редактора
 MDEDITOR_CONFIGS = {
     'default': {
@@ -142,7 +148,10 @@ MDEDITOR_CONFIGS = {
     }
 }
 
-# настройки 
+# Для загрузки картинок в MDEDITOR
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+# Настройки md-рендеринга
 MARKDOWNIFY = {
     "default": {
         "MARKDOWN_EXTENSIONS": [
@@ -156,5 +165,3 @@ MARKDOWNIFY = {
         "WHITELIST_ATTRS": ["href", "src", "alt", "title",],
     }
 }
-
-X_FRAME_OPTIONS = 'SAMEORIGIN'
