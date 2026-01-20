@@ -14,9 +14,13 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = os.getenv("DEBUG", "false").lower() == "true"
 
-ALLOWED_HOSTS = []
 
-INTERNAL_IPS = ["127.0.0.1"]
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", []).split(",")
+
+if DEBUG:
+    INTERNAL_IPS = ["127.0.0.1"]
+else:
+    INTERNAL_IPS = []
 
 INSTALLED_APPS = [
     # Мои приложения
@@ -35,12 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 ]
 
-if DEBUG:
-    INSTALLED_APPS += ["debug_toolbar"]
-
 MIDDLEWARE = [
-    # Third-party
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
     # Системные
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -72,12 +71,37 @@ TEMPLATES = [
 WSGI_APPLICATION = "project.wsgi.application"
 
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+# Подключение debug-toolbar
+if DEBUG:
+    INSTALLED_APPS += ["debug_toolbar"]
+    MIDDLEWARE +=  ["debug_toolbar.middleware.DebugToolbarMiddleware"]
+
+
+# Настройки БД
+DB_NAME = os.environ.get("DB_NAME")
+
+if DB_NAME:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.environ.get("DB_NAME"),
+            "USER": os.environ.get("DB_USER"),
+            "PASSWORD": os.environ.get("DB_PASSWORD"),
+            "HOST": os.environ.get("DB_HOST"),
+            "PORT": os.environ.get("DB_PORT"),
+            "CONN_MAX_AGE": 300,
+        }
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
 
 # Настройки аутентификации
 AUTH_USER_MODEL = "users.User"
@@ -102,6 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# Настройки локализации
 LANGUAGE_CODE = "ru"
 
 TIME_ZONE = "Europe/Moscow"
@@ -110,6 +135,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+
 # Статические файлы
 STATIC_URL = "static/"
 
@@ -117,12 +143,16 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+
+
+# Медиа папка
 MEDIA_ROOT = BASE_DIR / "media"  # физический путь на сервере, куда будут сохраняться загруженные файлы
 
 MEDIA_URL = "/media/"  # URL-префикс для доступа к медиафайлам
 
-
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Настройки md-редактора
 MDEDITOR_CONFIGS = {
