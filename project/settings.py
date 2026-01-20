@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 
-import dj_database_url 
 from dotenv import load_dotenv
 
 
@@ -44,7 +43,6 @@ MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     # Системные
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -74,22 +72,12 @@ TEMPLATES = [
 WSGI_APPLICATION = "project.wsgi.application"
 
 
-DATABASE_URL = os.environ.get("DATABASE_URL")
-if DATABASE_URL:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=DATABASE_URL,
-            conn_max_age=600
-        )
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
-    }
-    
+}
 
 # Настройки аутентификации
 AUTH_USER_MODEL = "users.User"
@@ -124,20 +112,13 @@ USE_TZ = True
 
 # Статические файлы
 STATIC_URL = "static/"
+
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
-# Этот код может вызывать неполдки в DEBUG режиме
-if not DEBUG:
-    # Название папки должно быть обязательно таким для деплоя на render.com
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
-    
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-
-# Медиа-папка
 MEDIA_ROOT = BASE_DIR / "media"  # физический путь на сервере, куда будут сохраняться загруженные файлы
+
 MEDIA_URL = "/media/"  # URL-префикс для доступа к медиафайлам
 
 
