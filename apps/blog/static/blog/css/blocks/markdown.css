@@ -4,25 +4,44 @@
 
 .markdown h2 {
     font-size: var(--font-size-m2);
-    margin-top: var(--space-12);
-    margin-bottom: var(--space-2);
+    margin-top: var(--space-16);
+    margin-bottom: var(--space-3);
 }
 
 .markdown h3 {
     font-size: var(--font-size-m);
+    margin-top: var(--space-12);
+    margin-bottom: var(--space-4);
 }
 
 .markdown h4 {
     font-size: var(--font-size-s);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-4);
 }
 
 .markdown p {
     font-size: var(--font-size-s);
 }
 
-.markdown ul {
+.markdown a {
+    color: var(--accent-color-1);
+    font-weight: var(--font-weight-medium);
+}
+
+.markdown ul, .markdown ol {
     font-size: var(--font-size-s);
     padding-left: var(--space-10);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-4);
+}
+
+.markdown ul {
+    list-style-type: disc;
+}
+
+.markdown ol {
+    list-style-type: decimal;
 }
 
 .markdown p, .markdown li {
@@ -32,10 +51,6 @@
 
 .markdown li {
     margin-bottom: var(--space-2);
-}
-
-.markdown li::marker {
-    content: "- ";
 }
 
 .markdown code {
@@ -54,4 +69,36 @@
     width: 80%;
     object-fit: cover;
     margin: var(--space-4) auto;
+}
+
+.markdown strong {
+    font-weight: var(--font-weight-bold);
+}
+
+.markdown hr {
+    margin-bottom: var(--space-8);
+}
+
+.markdown table {
+    font-size: var(--font-size-xs);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-10);
+    border-collapse: collapse;
+}
+
+.markdown thead {
+    border-bottom: var(--space-2) solid transparent;
+}
+
+.markdown td {
+    padding: var(--space-2);
+    border-bottom: 1px solid var(--color-text-secondary);
+}
+
+.markdown blockquote {
+    background-color: var(--color-bg-primary);
+    margin: 0px;
+    padding: var(--space-3) var(--space-2) var(--space-3) var(--space-6);
+    border-radius: var(--space-1);
+    border-left: 4px solid var(--accent-color-1);
 }

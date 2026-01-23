@@ -187,11 +187,16 @@ MARKDOWNIFY = {
         "MARKDOWN_EXTENSIONS": [
             "markdown.extensions.extra",
             "markdown.extensions.codehilite",
+            "markdown.extensions.tables",
         ],
+        "STRIP": False,  # не удалять теги
         "WHITELIST_TAGS": [
-            "p", "h2", "h3", "h4", "ul", "ol", "li", "img",
-            "strong", "em", "a", "code", "pre", "blockquote"
+            "p", "h2", "h3", "h4",
+            "ul", "ol", "li",
+            "img", "strong", "em", "b", "i", "a", 
+            "code", "pre", "blockquote", "br", "hr",
+            "table", "thead", "tbody", "tr", "th", "td"
         ],
-        "WHITELIST_ATTRS": ["href", "src", "alt", "title",],
+        "WHITELIST_ATTRS": ["href", "src", "alt", "title", "class"],
     }
 }
