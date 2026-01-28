@@ -1,26 +1,26 @@
 .title-h1 {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-h1);
     font-weight: var(--font-weight-bold);
     line-height: 0.9;
 }
 
 .title-h2 {
-    font-size: var(--font-size-l);
+    font-size: var(--font-size-h2);
     font-weight: var(--font-weight-bold);
 }
 
 .title-h3 {
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-h3);
     font-weight: var(--font-weight-bold);
 }
 
 .title-h4 {
-    font-size: var(--font-size-s);
+    font-size: var(--font-size-paragraph);
     font-weight: var(--font-weight-medium);
 }
 
 .text {
-    font-size: var(--font-size-s);
+    font-size: var(--font-size-paragraph);
     font-weight: var(--font-weight-normal);
 }
 
@@ -29,7 +29,7 @@
 }
 
 .label {
-    font-size: var(--font-size-s);
+    font-size: var(--font-size-paragraph);
     font-weight: var(--font-weight-bold);
     font-style: italic;
 }

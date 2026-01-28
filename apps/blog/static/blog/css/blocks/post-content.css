@@ -20,3 +20,14 @@
 .post-content__text {
     max-width: 75%;
 }
+
+@media (width < 450px) {
+    .post-content__container {
+        flex-direction: column;
+    }
+
+    .post-content__aside, .post-content__text {
+        max-width: none;
+        width: 100%;
+    }
+}

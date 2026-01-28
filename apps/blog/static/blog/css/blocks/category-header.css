@@ -21,3 +21,24 @@
     gap: var(--space-3);
     text-align: center;
 }
+
+.category-header__card-1, .category-header__card-3 {
+    width: 30%;
+    aspect-ratio: 3 / 4;
+}
+
+.category-header__card-2 {
+    width: 36%;
+    aspect-ratio: 3 / 4;
+}
+
+@media (max-width: 900px) {
+    .category-header__posts {
+        display: none;
+    }
+
+    .category-header__text {
+        width: 100%;
+        max-width: none;
+    }
+}

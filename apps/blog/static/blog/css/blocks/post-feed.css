@@ -1,0 +1,30 @@
+.post-feed_orange {
+    background-color: var(--accent-color-1);
+}
+
+.post-feed_orange .card, .post-feed_orange .arrow-button {
+    box-shadow: var(--shadow-orange);
+}
+
+.post-feed__title {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-2);
+    align-items: center;
+    margin-bottom: var(--space-2);
+}
+
+.post-feed__title_white {
+    color: var(--color-text-3);
+}
+
+.post-feed__link {
+    text-wrap: nowrap;
+}
+
+@media (width < 450px) {
+    .post-feed__title {
+        gap: var(--space-6);
+        justify-content: space-between;
+    }
+}

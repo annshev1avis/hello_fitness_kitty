@@ -34,3 +34,16 @@
     border: 1px solid var(--color-text-secondary);
     border-radius: var(--space-3);
 }
+
+@media (width < 450px) {
+    .post-header__container {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: start;
+    }
+
+    .post-header__image {
+        width: 100%;
+        aspect-ratio: 1/1;
+    }
+}

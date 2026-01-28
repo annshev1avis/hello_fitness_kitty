@@ -18,9 +18,9 @@
       </div>
       {% if posts|length >= 3 %}
         <div class="category-header__posts">
-          {% include "blog/includes/card.html" with post=posts.0 size_class="card_size_l" orientation_class="card_orientation_vertical" %}
-          {% include "blog/includes/card.html" with post=posts.1 size_class="card_size_xl" orientation_class="card_orientation_vertical" %}
-          {% include "blog/includes/card.html" with post=posts.2 size_class="card_size_l" orientation_class="card_orientation_vertical" %}
+          {% include "blog/includes/card.html" with post=posts.0 element_class="category-header__card-1" orientation_class="card_orientation_vertical" %}
+          {% include "blog/includes/card.html" with post=posts.1 element_class="category-header__card-2" orientation_class="card_orientation_vertical" %}
+          {% include "blog/includes/card.html" with post=posts.2 element_class="category-header__card-3" orientation_class="card_orientation_vertical" %}
         </div>
       {% endif %}
     </div>

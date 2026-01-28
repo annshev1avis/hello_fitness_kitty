@@ -10,21 +10,69 @@
 {% endblock %}
 
 {% block content %}
-  <section class="hero-section">
+
+  <!-- Hero-секция для широких экранов -->
+  <section class="best-posts">
     <div class="container">
-      <div class="hero-section__title">
-        <h1 class="hero-section__name title-h1">Лучшие публикации</h2>
-        <a class="hero-section__all_button label" href="{% url "blog:all_posts" %}">Смотреть все -&gt</a>
+      <div class="best-posts__title">
+        <h1 class="best-posts__name title-h1">Лучшие публикации</h2>
+        <a class="best-posts__all_button label" href="{% url "blog:all_posts" %}">Смотреть все -&gt</a>
       </div>
-      {% include "blog/includes/home_page_grid.html" with posts=best_5_posts %}
+
+      <!-- Грид с карточками  -->
+      <div class="best-posts-grid">
+        <div class="card card_size_grid card_orientation_horizontal best-posts-grid__card-1">
+          <img class="card__image card__image_orientation_horizontal"
+            src="{% static 'img/fitness legs.jpg'%}"
+            alt="Девушка занимается фитнесом"/>
+          <p class="title-h3 card__content">Это блог о том, как сделать свою жизнь счастливее с помощью фитнеса</p>
+        </div>
+        <div class="card card_size_grid best-posts-grid__card-2">
+          <img class="card__image card__image_full" src="{% static 'img/cat_nyan.gif'%}"/>
+        </div>
+
+        {% include "blog/includes/card.html" with post=best_5_posts.0 element_class="best-posts-grid__card-3" size_class="card_size_grid" orientation_class="card_orientation_vertical" backup_image_url="img/dancing.jpg" %}
+        {% include "blog/includes/card.html" with post=best_5_posts.1 element_class="best-posts-grid__card-4" size_class="card_size_grid" orientation_class="card_orientation_vertical" backup_image_url="img/stretching classes.jpg" %}
+        {% include "blog/includes/card.html" with post=best_5_posts.2 element_class="best-posts-grid__card-5" size_class="card_size_grid" orientation_class="card_orientation_vertical" backup_image_url="img/healthy breakfast.jpg" %}
+        {% include "blog/includes/card.html" with post=best_5_posts.3 element_class="best-posts-grid__card-6" size_class="card_size_grid" orientation_class="card_orientation_vertical" backup_image_url="img/pull up.jpg" %}
+        
+        <div class="card card_size_grid best-posts-grid__card-7">
+          <img class="card__image card__image_full" src="{% static 'img/strong squad.jpg'%}"/>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Hero-секция для небольших экранов -->
+  <section class="mobile-hero-section">
+    <div class="container mobile-hero-section__container">
+      <h3 class="mobile-hero-section__text">Это блог о том, как сделать свою жизнь счастливее с помощью фитнеса</h3>
+      <img class="mobile-hero-section__image" src="{% static 'blog/img/nyan-cat-mobile.png' %}"/>
+    </div>
+  </section>
+
+  <section class="post-feed post-feed_orange mobile-best-posts">
+    <div class="container">
+      <div class="post-feed__title post-feed__title_white">
+        <h2 class="title-h2">Лучшие посты</h2>
+        <a class="label post-feed__link" href="{% url "blog:all_posts" %}">Смотреть все -&gt</a>
+      </div>
+
+      {% if best_5_posts %}
+        {% include "blog/includes/posts_gallery.html" with posts=best_5_posts %}
+      {% else %}
+        <p class="text">Здесь пока нет постов</p>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- Посты по категориям -->
   {% for item in posts_by_category %}
     <section class="post-feed">
       <div class="container">
         <div class="post-feed__title">
           <h2 class="title-h2">{{ item.category.name }}</h2>
-          <a class="label" href="{% url "blog:category" item.category.slug %}">Смотреть все -&gt</a>
+          <a class="label post-feed__link" href="{% url "blog:category" item.category.slug %}">Смотреть все -&gt</a>
         </div>
 
         {% if item.posts %}

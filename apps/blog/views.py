@@ -49,9 +49,8 @@ def posts(request):
     
     if len(posts) >= 5:
         context["best_5_posts"] = posts[:5]
-        context["posts"] = posts[5:]
-    else:
-        context["posts"] = posts
+
+    context["posts"] = posts
     
     return render(
         request,

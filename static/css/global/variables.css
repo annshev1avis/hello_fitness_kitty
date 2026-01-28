@@ -21,12 +21,11 @@
     --font-family-primary: "Rubik";
 
     /* Размеры шрифта */
-    --font-size-xs: 1.3rem;
-    --font-size-s: 1.6rem;
-    --font-size-m: 2rem;
-    --font-size-m2: 2.4rem;
-    --font-size-l: 3.6rem;
-    --font-size-xl: 5.8rem;
+    --font-size-table: 1.3rem;
+    --font-size-paragraph: 1.6rem;
+    --font-size-h3: 2rem;
+    --font-size-h2: 3.6rem;
+    --font-size-h1: 5.8rem;
 
     /* Толщина шрифта */
     --font-weight-light: 300;
@@ -36,7 +35,6 @@
     --font-weight-bold: 700;
 
     /* Spacing (4px system) */
-    --space-0: 0;
     --space-1: 0.4rem;
     --space-2: 0.8rem;
     --space-3: 1.2rem;
@@ -52,6 +50,15 @@
 
     /* Тени */
     --shadow: 0rem 0.4rem 0.4rem 0rem #C0C0C0;
+    --shadow-orange: 0rem 0.4rem 0.4rem 0rem var(--accent-color-1-hover);
+}
 
-    /* Анимации */
+@media (width < 550px) {
+    :root {
+        --font-size-table: 1.3rem;
+        --font-size-paragraph: 1.6rem;
+        --font-size-h3: 2rem;
+        --font-size-h2: 2.8rem;
+        --font-size-h1: 3.2rem;
+    }
 }

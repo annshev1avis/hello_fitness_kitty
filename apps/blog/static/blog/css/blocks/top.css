@@ -51,3 +51,9 @@
     background-color: var(--accent-color-1);
     color: var(--color-text-3);
 }
+
+@media (width < 1000px) {
+    .top {
+        display: none;
+    }
+}

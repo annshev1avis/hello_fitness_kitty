@@ -3,3 +3,9 @@
     padding: var(--space-6) var(--space-10);
     margin: 0 auto;
 }
+
+@media (width < 450px) {
+    .container {
+        padding: var(--space-6) var(--space-6);
+    }
+}
