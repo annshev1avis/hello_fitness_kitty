@@ -25,6 +25,6 @@
       <a class="button text card__button" href="{% url "blog:single_post" post.slug %}">Читать</a>
     </div>
   {% else %}
-    <img class="card__image card__image_orientation_horizontal" src="{% static backup_image_url %}"/>
+    <img class="card__image card__image_full" src="{% static backup_image_url %}"/>
   {% endif %}
 </div>

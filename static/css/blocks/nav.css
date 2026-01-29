@@ -7,3 +7,11 @@
 .nav__item {
     text-wrap: nowrap;
 }
+
+@media (width < 700px) {
+    .nav__list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+}

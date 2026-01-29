@@ -30,7 +30,9 @@
           </ul>
         </nav>
         <nav class="header__nav-mobile">
-          <img class="header__menu-icon" src="{% static 'img/menu icon.svg' %}"/>
+          <button class="header__menu-button">
+            <img class="header__menu-icon" src="{% static 'img/menu icon.svg' %}"/>
+          </button>
         </nav>
       </div>
     </header>
@@ -40,7 +42,7 @@
     <footer class="footer">
       <div class="container footer__container">
         <a class="title-h3" href="{% url "blog:home_page" %}">Hello fitness kitty!</a>
-        <nav class="nav footer__nav">
+        <nav class="nav">
           <ul class="nav__list">
             <li class="nav__item label"><a href={% url "blog:random_post" %}>В случайный интересный пост -&gt</a></li>
             <li class="nav__item label"><a href="{% url "pages:about_me" %}">Об авторе -&gt</a></li>
@@ -49,12 +51,48 @@
         <h4 class="footer__copyright text">Этот сайтик сделан Анюткой ❤️</h4>
       </div>    
     </footer>
+
+    <!-- Всплывающее меню -->
+    <section class="mobile-menu">
+      <div class="mobile-menu__overlay"></div>
+      <div class="mobile-menu__sidebar">
+        <button class="arrow-button mobile-menu__close-button">
+          <img class="arrow-button__icon" src="{% static "img/arrow left.svg" %}" alt="arrow left"/>
+        </button>
+
+        <nav>
+          <h3 class="title-h3 mobile-menu__title">Перейти в</h3>
+          <ul class="mobile-menu__list">
+            {% for category in categories %}
+              <li class="mobile-menu__item menu-link text">
+                <a href={% url "blog:category" category.slug %}>
+                  {{ category.name }}
+                </a>
+                <img class="menu-link__arrow" src="{% static 'img/mini arrow right.svg' %}"/>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+
+        
+        <div class="mobile-menu__profile menu-link">
+          <div class="menu-link__text">
+            <span class="text">Профиль</span>
+            {% if user %}
+              <span class="text text_secondary">{{ user.email }}</span>
+            {% endif %}
+          </div>
+          <img class="menu-link__arrow" src="{% static 'img/mini arrow right.svg' %}"/>
+        </div>
+      </div>
+    </section>
+  
+    <script src="{% static "js/modal_menu.js" %}"></script>
+    <!--Подключение библиотеки Swiper-->
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="{% static "js/init_swiper.js" %}"></script>
+
+    {% block scripts %}{% endblock %}
   </body>
-
-  <!--Подключение библиотеки Swiper-->
-  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script src="{% static "js/init_swiper.js" %}"></script>
-
-  {% block scripts %}{% endblock %}
 </html>

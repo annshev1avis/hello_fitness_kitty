@@ -10,6 +10,8 @@
 @import "blocks/footer.css";
 @import "blocks/header.css";
 @import "blocks/main.css";
+@import "blocks/menu-link.css";
+@import "blocks/mobile-menu.css";
 @import "blocks/nav.css";
 @import "blocks/root.css";
 @import "blocks/typography.css";
