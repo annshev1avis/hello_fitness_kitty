@@ -63,11 +63,12 @@ def single_post(request, post_slug):
     return render(
         request,
         "blog/single_post.html",
-        {"post": get_object_or_404(
+        {
+            "post": get_object_or_404(
             Post.objects.select_related("category")
             .prefetch_related("recommended_posts"),
-            slug=post_slug
-        )}
+            slug=post_slug),
+        }
     )
 
 
