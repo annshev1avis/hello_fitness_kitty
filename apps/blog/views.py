@@ -1,7 +1,5 @@
 import random
 
-from django.http import HttpResponse, JsonResponse
-from django.db.models import QuerySet
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
@@ -60,6 +58,11 @@ def posts(request):
 
 
 def single_post(request, post_slug):
+    is_liked = False
+    
+    if request.user.is_authenticated:
+        is_liked = request.user.liked_posts.filter(slug=post_slug).exists()
+    
     return render(
         request,
         "blog/single_post.html",
@@ -68,6 +71,7 @@ def single_post(request, post_slug):
             Post.objects.select_related("category")
             .prefetch_related("recommended_posts"),
             slug=post_slug),
+            "is_liked": is_liked,
         }
     )
 

@@ -35,26 +35,52 @@ class BrowserStorage {
 }
 
 class DbStorage {
+    getCsrfToken () {
+        return document.querySelector("[name='csrfmiddlewaretoken']").value;
+    }
 
+    async isInList(postId) {
+        const response = await fetch(`http://127.0.0.1:8000/users/favorites/${postId}/check/`);
+        const data = await response.json();
+        return data["result"];
+    }
+
+    async addPost(postId) {
+        await fetch(`http://127.0.0.1:8000/users/favorites/${postId}/`,
+            {
+                method: "POST",
+                headers: {"X-CSRFToken": this.getCsrfToken()}
+            }
+        );
+    }
+
+    async removePost(postId) {
+        await fetch(`http://127.0.0.1:8000/users/favorites/${postId}/`,
+            {
+                method: "DELETE",
+                headers: {"X-CSRFToken": this.getCsrfToken()}
+            }
+        );
+    }
 }
 
 storage = USER_IS_AUTHENTICATED ? new DbStorage() : new BrowserStorage();
 
-function UpdateUi() {
+async function UpdateUi() {
     // Добавляет нужный класс кнопке Лайка
 
-    if (storage.isInList(postId)) {
+    if (await storage.isInList(postId)) {
         likeButton.classList.add("liked");
     } else {
         likeButton.classList.remove("liked");
     }
 }
 
-likeButton.addEventListener("click", function() {
-    if (storage.isInList(postId)) {
-        storage.removePost(postId);
+likeButton.addEventListener("click", async function() {
+    if (await storage.isInList(postId)) {
+        await storage.removePost(postId);
     } else {
-        storage.addPost(postId);
+        await storage.addPost(postId);
     }
 
     UpdateUi();

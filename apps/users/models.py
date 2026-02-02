@@ -37,6 +37,7 @@ class User(AbstractUser):
     username = None
     last_name = None
     email = models.EmailField(unique=True)
+    liked_posts = models.ManyToManyField("blog.Post", related_name="users_liked")
     
     objects = UserManager()
     

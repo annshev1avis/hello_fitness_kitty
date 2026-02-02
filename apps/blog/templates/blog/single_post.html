@@ -48,9 +48,12 @@
             <h4 class="title-h4 post-aside__title">Действия</h4>
             <div class="post_aside__buttons">
               <button class="icon icon_tg" data-action="share-tg"></button>
-              <button class="icon icon_link" data-action="share-link"></button>
+              <button class="icon icon_link"
+              data-action="share-link"></button>
+              {% csrf_token %}
               <button
-                class="icon icon_heart"
+                class="icon icon_heart
+                {% if is_liked %} liked {% endif %}"
                 data-action="like"
                 data-post-id="{{ post.id }}">
               </button>

@@ -96,3 +96,5 @@ class Post(models.Model):
         Формирует содержание статьи, извлекая список заголовков 2-го уровня
         """
         return FIND_H2_PATTERN.findall(self.content)
+
+
