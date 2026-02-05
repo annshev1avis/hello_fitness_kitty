@@ -3,7 +3,8 @@ const container = document.querySelector(".posts__list");
 LOCALSTORAGE_KEY = "likes";
 
 async function getLikedPosts() {
-    const likedPostsIds = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
+    const localStorageData = localStorage.getItem(LOCALSTORAGE_KEY);
+    const likedPostsIds = localStorageData ? JSON.parse(localStorageData) : [];
 
     if (likedPostsIds.length === 0)
         return [];
