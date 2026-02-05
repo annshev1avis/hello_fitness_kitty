@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Профиль{% endblock title %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{% static "users/css/styles.css" %}"/>
+{% endblock stylesheets %}
+
+{% block content %}
+  <div class="container profile">
+    <h2 class="title-h2 profile__title">Профиль</h2>
+    <div class="profile__sidebar-and-content">
+      <div class="profile__sidebar white-section">
+        <div class="profile__auth-text">
+          <h3 class="title-h3">Войдите в аккаунт, чтобы не потерять вашу коллекцию</h3>
+          <p class="text">
+            При создании аккаунта лайкнутые посты перенесутся в ваш аккаунт,
+            и вы сможете просматривать коллекцию на разных устройствах
+          </p>
+        </div>
+        <div class="profile__auth-buttons">
+          <a class="text button button_color_orange" href="{% url "users:login" %}">Войти</a>
+          <a class="text button button_color_orange" href="{% url "users:registration" %}">Зарегистрироваться</a>
+        </div>
+      </div>
+      <div class="profile__content">
+        <section>
+          <h2 class="title-h2 profile__content-title">Понравившиеся посты</h2>
+          <div class="posts__list"></div>
+        </section>    
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block scripts %}
+  <script src="{% static "users/js/liked_posts.js" %}"></script>
+{% endblock scripts %}

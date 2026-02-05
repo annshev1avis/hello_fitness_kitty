@@ -25,3 +25,12 @@
 .button_color_orange:hover {
     background-color: var(--accent-color-1-hover);
 }
+
+.button_color_black {
+    color: var(--color-text-3);
+    background-color: var(--color-bg-3);
+}
+
+.button_color_black:hover {
+    background-color: var(--color-bg-3);
+}

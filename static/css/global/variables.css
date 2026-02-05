@@ -16,12 +16,16 @@
     --color-button-hover: #d1d1d1;
     --color-button-focus: #b2b2b2;
 
+    --color-error-stroke: #FF0000;
+    --color-error-bg: rgba(255, 0, 0, 0.15);
+
 
     /* Шрифты */
     --font-family-primary: "Rubik";
 
     /* Размеры шрифта */
     --font-size-table: 1.3rem;
+    --font-size-small: 1.3rem;
     --font-size-paragraph: 1.6rem;
     --font-size-h3: 2rem;
     --font-size-h2: 3.6rem;

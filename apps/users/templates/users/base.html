@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,30 +9,18 @@
     <meta name="description" content="Это блог для девушек о фитнесе и здоровом образе жизни">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{% static "img/fav.ico" %}" type="image/x-icon">
-    
-    <!--Подключение библиотеки Swiper-->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/styles.css' %}">
 
     <!--Для подключения дополнительных css-->
     {% block stylesheets %}{% endblock %}
   </head>
-  <body>
+  <body class="image-background">
     {% include "includes/header.html" %}
     <main>
       {% block content %}{% endblock %}
     </main>
     {% include "includes/footer.html" %}
     {% include "includes/mobile_menu.html" %}
-
-    <!--Подключение библиотеки Swiper-->
-    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="{% static "js/init_swiper.js" %}"></script>
-
-    <!--Для подключения дополнительных скриптов-->
-    {% block scripts %}{% endblock %}
   </body>
 </html>

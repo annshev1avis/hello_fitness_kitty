@@ -1,0 +1,18 @@
+{% extends "users/base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <div class="container">
+    <form class="form form_alinment_center form_big-margins form_size_compact white-section" method="post">
+      {% csrf_token %}
+      <h3 class="title-h3">Вход</h3>
+      {% include "includes/form_errors_and_fields.html" %}
+      <button class="button button_color_black text form__button" type="submit">
+        Войти
+      </button>
+      <p class="text">
+        Еще нет аккаунта? <span class="label"><a href="{% url "users:registration" %}">Регистрация -&gt</a></span>
+      </p>
+    </form>
+  </div>
+{% endblock%}

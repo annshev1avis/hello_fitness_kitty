@@ -1,0 +1,17 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block title %}Вы успешно вышли{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="white-section logged-out-info">
+        <h3 class="title-h3">Вы успешно вышли из аккаунта</h3>
+        <img class="logged-out-info__image" src="{% static "img/nyan-cat-mobile.png" %}"/>
+        <div class="logged-out-info__buttons">
+          <a class="button button_color_black text logged-out-info__button" href="{% url "users:login" %}">Войти</a>
+          <a class="button button_color_black text logged-out-info__button" href="{% url "blog:home_page" %}">Вернуться на главную</a>
+        </div>
+    </div>
+  </div>
+{% endblock %}

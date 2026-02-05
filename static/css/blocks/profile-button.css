@@ -1,0 +1,17 @@
+.profile-button {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-2);
+    align-items: center;
+}
+
+.profile-button__icon {
+    height: 25px;
+    aspect-ratio: 1/1;
+}
+
+@media (width < 900px) {
+    .profile-button {
+        display: none;
+    }
+}

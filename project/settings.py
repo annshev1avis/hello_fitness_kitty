@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     # Third-party приложения
     "mdeditor",
     "markdownify",
+    "widget_tweaks",
     # Системные приложения
     "django.contrib.admin",
     "django.contrib.auth",
@@ -126,7 +127,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# LOGIN_URL = reverse_lazy("user:login")
+LOGIN_URL = reverse_lazy("users:login")
+
 
 
 # Настройки локализации

@@ -1,0 +1,12 @@
+<footer class="footer">
+  <div class="container footer__container">
+    <a class="title-h3" href="{% url "blog:home_page" %}">Hello fitness kitty!</a>
+    <nav class="nav">
+      <ul class="nav__list">
+        <li class="nav__item label"><a href={% url "blog:random_post" %}>В случайный интересный пост -&gt</a></li>
+        <li class="nav__item label"><a href="{% url "pages:about_me" %}">Об авторе -&gt</a></li>
+      </ul>
+    </nav>
+    <h4 class="footer__copyright text">Этот сайтик сделан Анюткой ❤️</h4>
+  </div>    
+</footer>

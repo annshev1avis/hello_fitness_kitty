@@ -1,0 +1,19 @@
+{% extends "users/base.html" %}
+
+{% block title %}Регистрация{% endblock title %}
+
+{% block content %}
+  <div class="container">
+    <form class="form form_alinment_center form_big-margins form_size_compact white-section" method="post">
+      {% csrf_token %}
+      <h3 class="title-h3">Регистрация</h3>
+      {% include "includes/form_errors_and_fields.html" %}
+      <button class="text button button_color_black form__button" type="submit">
+        Зарегистрироваться
+      </button>
+      <p class="text">
+        Уже есть аккаунт? <span class="label"><a href="{% url "users:login" %}">Войти -&gt</a></span>
+      </p>
+    </form>
+  </div>
+{% endblock content %}

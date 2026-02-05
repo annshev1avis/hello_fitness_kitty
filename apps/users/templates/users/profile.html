@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{% static "users/css/styles.css" %}">
+  <link rel="stylesheet" href="{% static "blog/css/blog_styles.css" %}">
+{% endblock %}
+
+{% block content %}
+  <div class="container profile">
+    <h2 class="title-h2 profile__title">Профиль</h2>
+    <div class="profile__sidebar-and-content">
+      <div class="profile__sidebar white-section">
+        <div class="profile__user-data">
+          <img class="profile__avatar" src="{% static "users/img/avatar.jpg" %}"/>
+          <h4 class="title-h4">{{ user.first_name }}</h4>
+          <p class="text text_secondary">{{ user.email }}</p>
+        </div>
+        <form method="post" action="{% url "users:logout" %}">
+          {% csrf_token %}
+          <button class="button text"type="submit">Выйти</button>
+        </form>
+      </div>
+      <div class="profile__content">
+        <form class="form form_size_full white-section" method="post">
+          {% csrf_token %}
+          <h2 class="title-h2">Личные данные</h2>
+          {% include "includes/form_errors_and_fields.html" %}
+          <div class="form__buttons">
+            <button class="text button button_color_orange" type="submit">Сохранить</button>
+            <a class="text button" href="{% url "users:password_change" %}">Изменить пароль</a>
+          </div>
+        </form>
+        <section>
+          <h2 class="title-h2 profile__content-title">Понравившиеся посты</h2>
+          {% include "blog/includes/posts.html" with posts=user.liked_posts.all %}
+        </section>    
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,72 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.form_big-margins {
+    margin: var(--space-20) 0;
+}
+
+.form_alinment_center {
+    align-items: center;
+}
+
+.form_size_full {
+    width: 100%;
+}
+
+.form_size_compact {
+    width: 320px;
+}
+
+.form__non-field-errors {
+    padding: var(--space-2);
+    border: 1px solid var(--color-error-stroke);
+    border-radius: var(--space-2);
+    background-color: var(--color-error-bg);
+}
+
+.form__fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    width: 100%;
+}
+
+.form__field-and-label {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    width: 100%;
+}
+
+.form__label {
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-medium);
+    margin-left: var(--space-2);
+}
+
+.form__field {
+    background-color: transparent;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--space-3);
+    border: 1px solid var(--color-text-secondary);
+    max-width: 350px;
+}
+
+.form__field-errors {
+    color: var(--color-error-stroke);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.form__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-3);
+}
+
+.form__button {
+    width: 100%;
+}

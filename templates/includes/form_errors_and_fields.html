@@ -1,0 +1,31 @@
+{% load widget_tweaks %}
+
+{% if form.non_field_errors %}
+  <div class="form__non-field-errors">
+    <ul>
+      {% for error in form.non_field_errors %}
+        <li class="small-text">• {{ error }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
+<div class="form__fieldset">
+  {% for field in form %}
+    <div class="form__field-and-label">
+      <label class="form__label" for="{{ field.id_for_label }}">
+        {{ field.label }}{% if field.field.required %}*{% endif %}
+      </label>
+
+      {{ field|add_class:"form__field" }}
+
+      {% if field.errors %}
+        <ul>
+          {% for error in field.errors %}
+            <li class="form__field-errors small-text">• {{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>

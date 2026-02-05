@@ -6,12 +6,17 @@
 /* Blocks */
 @import "blocks/body.css";
 @import "blocks/button.css";
+@import "blocks/card.css";
 @import "blocks/container.css";
 @import "blocks/footer.css";
+@import "blocks/form.css";
 @import "blocks/header.css";
+@import "blocks/image-background.css";
 @import "blocks/main.css";
 @import "blocks/menu-link.css";
 @import "blocks/mobile-menu.css";
 @import "blocks/nav.css";
+@import "blocks/profile-button.css";
 @import "blocks/root.css";
 @import "blocks/typography.css";
+@import "blocks/white-section.css";

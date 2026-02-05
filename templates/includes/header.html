@@ -1,0 +1,30 @@
+{% load static %}
+
+<header class="header {{ header_modificator }}">
+  <div class="container header__container">
+    <a class="title-h3" href="{% url "blog:home_page" %}">Hello fitness kitty!</a>
+    <nav class="nav header__nav">
+      <ul class="nav__list">
+        {% for category in categories %}
+          <li class="nav__item text"><a href={% url "blog:category" category.slug %}>{{ category.name }}</a></li>
+        {% endfor %}
+        <li class="nav__item text"><a href={% url "pages:about_me" %}>Обо мне</a></li>
+      </ul>
+    </nav>
+    
+    <a href="{% url "users:profile" %}">
+      <div class="profile-button">
+        <img class="profile-button__icon" src="{% static "img/profile icon.svg" %}"/>
+        {% if user.is_authenticated %}
+          <p class="text">{{ user.first_name }}</p>
+        {% endif %}
+      </div>
+    </a>
+
+    <nav class="header__nav-mobile">
+      <button class="header__menu-button">
+        <img class="header__menu-icon" src="{% static 'img/menu icon.svg' %}"/>
+      </button>
+    </nav>
+  </div>
+</header>
