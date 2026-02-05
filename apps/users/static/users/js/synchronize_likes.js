@@ -10,7 +10,7 @@ async function synchronizeLikes() {
     if (likedPostsIds.length === 0) return;
 
     for (const postId of likedPostsIds) {
-        await fetch(`http://127.0.0.1:8000/api/favorites/${postId}/`,
+        await fetch(`/api/favorites/${postId}/`,
             {
                 method: "POST",
                 headers: {"X-CSRFToken": getCsrfToken()}

@@ -40,13 +40,13 @@ function getCsrfToken () {
 
 class DbStorage {
     async isInList(postId) {
-        const response = await fetch(`http://127.0.0.1:8000/api/favorites/${postId}/`);
+        const response = await fetch(`/api/favorites/${postId}/`);
         const data = await response.json();
         return data["result"];
     }
 
     async addPost(postId) {
-        await fetch(`http://127.0.0.1:8000/api/favorites/${postId}/`,
+        await fetch(`/api/favorites/${postId}/`,
             {
                 method: "POST",
                 headers: {"X-CSRFToken": getCsrfToken()}
@@ -55,7 +55,7 @@ class DbStorage {
     }
 
     async removePost(postId) {
-        await fetch(`http://127.0.0.1:8000/api/favorites/${postId}/`,
+        await fetch(`/api/favorites/${postId}/`,
             {
                 method: "DELETE",
                 headers: {"X-CSRFToken": getCsrfToken()}

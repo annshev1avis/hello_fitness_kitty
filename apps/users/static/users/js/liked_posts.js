@@ -5,7 +5,10 @@ LOCALSTORAGE_KEY = "likes";
 async function getLikedPosts() {
     const likedPostsIds = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
 
-    const posts = await fetch(`http://127.0.0.1:8000/api/posts/${likedPostsIds.join(",")}/`)
+    if (likedPostsIds.length === 0)
+        return [];
+
+    const posts = await fetch(`/api/posts/${likedPostsIds.join(",")}/`)
         .then((response) => {
             if (response.ok) {
                 return response.json();
@@ -57,6 +60,7 @@ function createPost(postData) {
     const button = document.createElement("a");
     button.className = "button text card__button";
     button.textContent = "Читать";
+    button.href = `/posts/${postData["slug"]}`;
     content.appendChild(button);
 
     return post;
