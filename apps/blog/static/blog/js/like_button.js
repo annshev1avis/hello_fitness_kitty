@@ -34,31 +34,31 @@ class BrowserStorage {
     }
 }
 
-class DbStorage {
-    getCsrfToken () {
-        return document.querySelector("[name='csrfmiddlewaretoken']").value;
-    }
+function getCsrfToken () {
+    return document.querySelector("[name='csrfmiddlewaretoken']").value;
+}
 
+class DbStorage {
     async isInList(postId) {
-        const response = await fetch(`http://127.0.0.1:8000/users/favorites/${postId}/check/`);
+        const response = await fetch(`http://127.0.0.1:8000/favorites/${postId}/`);
         const data = await response.json();
         return data["result"];
     }
 
     async addPost(postId) {
-        await fetch(`http://127.0.0.1:8000/users/favorites/${postId}/`,
+        await fetch(`http://127.0.0.1:8000/favorites/${postId}/`,
             {
                 method: "POST",
-                headers: {"X-CSRFToken": this.getCsrfToken()}
+                headers: {"X-CSRFToken": getCsrfToken()}
             }
         );
     }
 
     async removePost(postId) {
-        await fetch(`http://127.0.0.1:8000/users/favorites/${postId}/`,
+        await fetch(`http://127.0.0.1:8000/favorites/${postId}/`,
             {
                 method: "DELETE",
-                headers: {"X-CSRFToken": this.getCsrfToken()}
+                headers: {"X-CSRFToken": getCsrfToken()}
             }
         );
     }

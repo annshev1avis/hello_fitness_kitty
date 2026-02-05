@@ -8,6 +8,7 @@ urlpatterns = [
     path("", include("apps.blog.urls")),
     path("", include("apps.pages.urls")),
     path("users/", include("apps.users.urls")),
+    path("api/", include("apps.api.urls")),
     re_path(r"mdeditor/", include("mdeditor.urls")),
     path("admin/", admin.site.urls),
 ]

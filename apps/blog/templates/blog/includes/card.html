@@ -1,6 +1,6 @@
 {% load static %}
 
-<div class="card {{ element_class }} {{ size_class }}
+<article class="card {{ element_class }} {{ size_class }}
  {{ orientation_class }} {{ swiper_class }}">
   {% if post %}
     {% if number %}
@@ -27,4 +27,4 @@
   {% else %}
     <img class="card__image card__image_full" src="{% static backup_image_url %}"/>
   {% endif %}
-</div>
+</article>

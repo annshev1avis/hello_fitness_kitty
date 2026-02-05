@@ -25,6 +25,7 @@ else:
 
 INSTALLED_APPS = [
     # Мои приложения
+    "apps.api.apps.ApiConfig",
     "apps.blog.apps.BlogConfig",
     "apps.pages.apps.PagesConfig",
     "apps.users.apps.UsersConfig",
