@@ -70,3 +70,15 @@
 .form__button {
     width: 100%;
 }
+
+@media (width < 900px) {
+    .form_big-margins {
+        margin: var(--space-20) auto;
+    }
+}
+
+@media (width < 400px) {
+    .form_size_compact {
+        width: 100%;
+    }
+}
